@@ -8,28 +8,40 @@ import * as styles from "../components/index.module.css"
 
 const links = [
   {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial",
+    text: "Acerca de mí",
+    url: "sobre-mi",
     description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
+      "Entra aquí si quieres saber más sobre mí, mis trabajos, áreas de desarrollo y proyectos.",
   },
   {
-    text: "Examples",
-    url: "https://github.com/gatsbyjs/gatsby/tree/master/examples",
+    text: "Fotografía y retoque",
+    url: "fotografia-retoque",
     description:
-      "A collection of websites ranging from very basic to complex/complete that illustrate how to accomplish specific tasks within your Gatsby sites.",
+      "Aquí puedes ver algunos ejemplos de mis fotografías, mi trabajo de retoque fotográfico, montaje de imagen y edición de imagen no vectorizada",
   },
   {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
+    text: "Illustrator e InDesign",
+    url: "illustrator-indesign",
     description:
-      "Learn how to add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
+      "Uso de Illustrator, con imágenes vectorizadas, y uso de InDesign para el diseño de folletos, trípticos, materiales educativos, libros y revistas.",
   },
   {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
+    text: "Diseño Web",
+    url: "diseno-web",
     description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
+      "HTML, CSS, JavaScript, React y en general diseño de páginas web (¡Como ésta!)",
+  },
+  {
+    text: "Traducciones",
+    url: "traducciones",
+    description:
+      "Me apasiona aprender otras lenguas, poder comunicarme con otras personas y entender los memes de otras culturas, pero también me gusta compartir conocimiento que no está disponible en otros idiomas. ¡Aquí hay un poco de eso!",
+  },
+  {
+    text: "Estadística",
+    url:"estadistica",
+    description:
+    "Uso de R y Excel, estadística principalmente para la Ciencias Sociales, después de todo estudio sociología",
   },
 ]
 
@@ -82,7 +94,7 @@ const IndexPage = () => (
         style={{ marginBottom: `var(--space-3)` }}
       />
       <h1>
-        Welcome to <b>Gatsby!</b>
+        Bienvenido a mi portafolio, soy <b>Exequiel Trujillo</b>
       </h1>
       <p className={styles.intro}>
         <b>Example pages:</b>{" "}
