@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.com">
@@ -98,24 +97,3 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 The fastest way to combine your favorite tools and APIs to build the fastest sites, stores, and apps for the web. And also the best place to build, deploy, and host your Gatsby sites.
 
 <!-- AUTO-GENERATED-CONTENT:END -->
-=======
-# Mi Portafolio
-
-Bienvenido a mi portafolio. Este repositorio contiene mis proyectos y trabajos que he realizado en el ámbito del diseño gráfico, diseño web y traducción. Trabajado con Github, Visual Studio Code y Netlify, 
-
-## Habilidades
-
-- Photoshop
-- Illustrator
-- Adobe Premiere
-- InDesign
-- Diseño Web
-- Traducción
-
-## Licencia
-
-Este proyecto está bajo la Licencia MIT. Para más detalles, consulta el archivo LICENSE.
-
-## Contacto
-Puedes contactarme en exequiel.trujillo@ug.uchile.cl
->>>>>>> 434fa51a299844dfb5f0d155294833ec31da646e
