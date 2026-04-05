@@ -1,0 +1,220 @@
+/* assets/css/main.css */
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/* Tema Claro */
+:root {
+  --ui-bg: #F8F9FC;
+  /* Fondo ligeramente azulado muy suave */
+  --ui-text: #2C3054;
+  /* Texto azul oscuro para máximo contraste (ratio >7:1) */
+  --ui-primary: #226964;
+  /* Verde azulado más intenso como primario (teal) */
+  --ui-primary-rgb: 34, 105, 100;
+  --ui-secondary: #D06B90;
+  /* Rosa medio con suficiente contraste */
+  --ui-secondary-rgb: 208, 107, 144;
+  --ui-accent: #E87A46;
+  /* Naranja terracota como acento vibrante */
+  --ui-accent-rgb: 232, 122, 70;
+  --ui-highlight: #3DA5D9;
+  /* Azul turquesa brillante como resaltado */
+  --ui-highlight-rgb: 61, 165, 217;
+  --ui-border: #D8DDE9;
+  /* Borde gris azulado suave */
+  --ui-radius: 0.5rem;
+
+  /* --- Variables específicas para bloques de código --- */
+  --ui-code-block-bg: #EFF5F5;
+  /* Fondo código con toque turquesa muy suave */
+  --ui-inline-code-bg: #E6EFEF;
+  /* Fondo inline code con toque turquesa más claro */
+  --ui-inline-code-text: #2A4948;
+  /* Verde azulado oscuro para texto de código */
+}
+
+/* Tema Oscuro - Mantenido como en la propuesta anterior */
+.dark {
+  --ui-bg: #151829;
+  /* Fondo más oscuro para mejorar contraste */
+  --ui-text: #F8F9FD;
+  /* Texto más brillante para mejor legibilidad */
+  --ui-primary: #E6D000;
+  /* Amarillo primario más accesible con ratio >4.5:1 */
+  --ui-primary-rgb: 230, 208, 0;
+  --ui-secondary: #CD2E6C;
+  /* Secundario más vibrante y visible */
+  --ui-secondary-rgb: 205, 46, 108;
+  --ui-accent: #A12D5E;
+  /* Acento más contrastante */
+  --ui-accent-rgb: 161, 45, 94;
+  --ui-highlight: #FFF04D;
+  /* Amarillo más brillante para destacar en fondo oscuro */
+  --ui-highlight-rgb: 255, 240, 77;
+  --ui-border: #4A4F6A;
+  /* Borde más visible en modo oscuro */
+
+  /* --- Variables específicas para bloques de código (Modo Oscuro) --- */
+  --ui-code-block-bg: #222538;
+  --ui-inline-code-bg: #2A2E47;
+  --ui-inline-code-text: var(--ui-text);
+}
+
+.bg-gradient-primary {
+  background-image: linear-gradient(to right, rgb(var(--ui-primary-rgb)), rgb(var(--ui-secondary-rgb)));
+}
+
+.bg-gradient-highlight {
+  background-image: linear-gradient(to right, rgb(var(--ui-highlight-rgb)), rgb(var(--ui-secondary-rgb)));
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, rgb(var(--ui-primary-rgb)), rgb(var(--ui-secondary-rgb)));
+}
+
+.text-gradient-highlight {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, rgb(var(--ui-highlight-rgb)), rgb(var(--ui-primary-rgb)));
+}
+
+/* Estilos globales adicionales */
+body {
+  background-color: var(--ui-bg);
+  color: var(--ui-text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Estilizar scrollbar para navegadores WebKit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--ui-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--ui-border);
+  border-radius: var(--ui-radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ui-accent);
+}
+
+/* Estilos para Markdown */
+.prose {
+  color: var(--ui-text);
+}
+
+/* Encabezados */
+.prose h1 {
+  color: var(--ui-primary);
+  font-size: 2.25rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.prose h2 {
+  color: var(--ui-primary);
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.prose h3 {
+  color: var(--ui-primary);
+  font-size: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/* Listas */
+.prose ul {
+  list-style-type: disc !important;
+  padding-left: 1.5rem !important;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.prose ol {
+  list-style-type: decimal !important;
+  padding-left: 1.5rem !important;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.prose li {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  display: list-item !important;
+}
+
+/* Bloques de código */
+.prose pre {
+  background-color: var(--ui-code-block-bg);
+  border-radius: var(--ui-radius);
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px solid var(--ui-border);
+}
+
+.prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.875rem;
+  background-color: var(--ui-inline-code-bg);
+  color: var(--ui-inline-code-text);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.prose pre code {
+  background-color: transparent;
+  tab-size: inherit;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+  white-space: pre;
+}
+
+/* Párrafos */
+.prose p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.625;
+}
+
+.prose *+* {
+  margin-top: 0.75em;
+}
+
+/* Enlaces */
+.prose a {
+  color: var(--ui-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ui-primary);
+  transition: all 0.2s ease;
+}
+
+.prose a:hover {
+  color: var(--ui-accent);
+  border-bottom-color: var(--ui-accent);
+}
+
+.prose a[target="_blank"]::after {
+  content: "↗";
+  display: inline-block;
+  margin-left: 0.2em;
+  font-size: 0.8em;
+  vertical-align: super;
+}

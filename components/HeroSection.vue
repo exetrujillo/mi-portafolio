@@ -1,0 +1,258 @@
+<!-- components/HeroSection.vue -->
+<template>
+  <section class="hero-section relative overflow-hidden w-full min-h-screen flex items-center">
+    <!-- fondo con patrón de puntos -->
+    <div class="absolute inset-0 w-full h-full bg-dots opacity-5 z-0"></div>
+    <!-- círculos decorativos con efectos de gradiente -->
+    <div class="absolute -top-20 -left-20 w-64 h-64 bg-gradient-highlight opacity-20 rounded-full blur-2xl z-0"></div>
+    <div class="absolute -bottom-32 -right-20 w-80 h-80 bg-gradient-primary opacity-20 rounded-full blur-3xl z-0"></div>
+    
+    <!-- círculos adicionales para pantallas grandes -->
+    <div class="absolute top-1/4 left-1/4 w-48 h-48 bg-gradient-highlight opacity-10 rounded-full blur-2xl z-0 hidden xl:block"></div>
+    <div class="absolute bottom-1/3 right-1/3 w-56 h-56 bg-gradient-primary opacity-10 rounded-full blur-3xl z-0 hidden xl:block"></div>
+
+    <!-- contenedor con ancho completo y padding responsivo -->
+    <div class="w-full z-10 py-8 md:py-12 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto text-center">
+        <!-- avatar con NuxtImg -->
+        <div v-if="showAvatar" class="avatar-container mb-6 md:mb-8 inline-block">
+          <div class="avatar-ring p-1 rounded-full bg-gradient-primary">
+            <div class="bg-ui-bg rounded-full p-1">
+              <div class="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden">
+                <NuxtPicture
+                  src="/main-images/profile-img.jpeg" 
+                  alt="Foto de perfil" 
+                  width="96" 
+                  height="96" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- título principal con nombre sin el efecto typewriter aplicado a todo -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4">
+          <span class="text-gradient-highlight">{{ name }}</span>
+          <span class="cursor-effect"></span>
+        </h1>
+
+        <!-- subtítulo con badges -->
+        <div class="flex flex-wrap justify-center gap-2 mb-5 md:mb-6">
+          <span v-for="(skill, index) in title.split('|')" :key="index" 
+                class="badge px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
+                :class="{ 'bg-primary-light': true }">
+            {{ skill.trim() }}
+          </span>
+        </div>
+
+        <!-- descripción -->
+        <p class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-6 md:mb-8 max-w-3xl mx-auto px-3 sm:px-6 lg:px-8 text-ui-text">
+          {{ description }}
+        </p>
+
+        <!-- botones con efecto hover -->
+        <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+          <NuxtLink :to="primaryButtonLink" 
+                   class="btn-primary px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all hover:scale-105 hover:shadow-lg bg-gradient-primary text-white text-sm md:text-base">
+            {{ primaryButtonText }}
+          </NuxtLink>
+          <NuxtLink :to="secondaryButtonLink" 
+                   class="btn-secondary px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all hover:scale-105 border-2 border-ui-primary text-ui-primary text-sm md:text-base">
+            {{ secondaryButtonText }}
+          </NuxtLink>
+        </div>
+
+        <!-- scroll indicator -->
+        <div class="scroll-indicator mt-12 sm:mt-16 hidden md:block">
+          <div class="scroll-mouse mx-auto">
+            <div class="scroll-wheel"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script setup lang="ts">
+interface HeroProps {
+  name?: string;
+  title?: string;
+  description?: string;
+  primaryButtonText?: string;
+  primaryButtonLink?: string;
+  secondaryButtonText?: string;
+  secondaryButtonLink?: string;
+  showAvatar?: boolean;  
+}  
+
+const {  
+  name = 'Tu Nombre',  
+  title = 'Desarrollador Web | Diseñador | Creador',  
+  description = 'Bienvenido a mi portafolio personal. Aquí encontrarás mis proyectos, artículos y más información sobre mi trabajo.',  
+  primaryButtonText = 'Ver Portafolio',  
+  primaryButtonLink = '/portfolio',  
+  secondaryButtonText = 'Sobre Mí',  
+  secondaryButtonLink = '/about',  
+  showAvatar = true  
+} = defineProps<HeroProps>();  
+</script>
+
+<style scoped>
+.bg-dots {
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.avatar-ring {
+  box-shadow: 0 0 15px rgba(var(--ui-primary-rgb), 0.5);
+}
+
+.cursor-effect {
+  display: inline-block;
+  width: 3px;
+  height: 1.2em;
+  background-color: rgb(var(--ui-highlight-rgb));
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink 1.1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.bg-ui-bg {
+  background-color: var(--ui-bg);
+}
+
+.text-ui-primary {
+  color: var(--ui-primary);
+}
+
+.text-ui-text {
+  color: var(--ui-text);
+}
+
+.bg-ui-border {
+  background-color: var(--ui-border);
+}
+
+.border-ui-primary {
+  border-color: var(--ui-primary);
+}
+
+.bg-primary-light {
+  background-color: rgba(var(--ui-primary-rgb), 0.1);
+  color: rgb(var(--ui-primary-rgb));
+}
+
+.hero-section {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  height: 100vh;
+  padding-top: 0;
+  padding-bottom: 0;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 15px rgba(var(--ui-primary-rgb), 0.5);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(var(--ui-primary-rgb), 0.1);
+}
+
+.scroll-indicator {
+  animation: bounce 2s infinite;
+}
+
+.scroll-mouse {
+  width: 24px;
+  height: 40px;
+  border: 2px solid var(--ui-border);
+  border-radius: 20px;
+  position: relative;
+}
+
+.scroll-wheel {
+  width: 6px;
+  height: 6px;
+  background-color: rgb(var(--ui-primary-rgb));
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scroll 1.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(15px);
+  }
+}
+
+@media (max-height: 700px) {
+  .hero-section {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-section {
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 15vh;
+    padding-bottom: 4rem;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-section {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  .bg-dots {
+    background-size: 30px 30px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .hero-section {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  
+  .bg-dots {
+    background-size: 40px 40px;
+  }
+}
+</style>
